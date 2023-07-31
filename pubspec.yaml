@@ -1,0 +1,35 @@
+name: itizapp
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  dio: ^5.2.1+1
+  firebase_auth: ^4.6.3
+  firebase_core: ^2.14.0
+  firebase_messaging: ^14.6.4
+  flutter:
+    sdk: flutter
+  flutter_svg: ^1.1.1
+  google_fonts: ^5.1.0
+  http: ^1.1.0
+  logger: ^1.0.0
+  sizer: ^2.0.15
+  equatable: ^2.0.5
+  flutter_bloc: ^8.1.2
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
