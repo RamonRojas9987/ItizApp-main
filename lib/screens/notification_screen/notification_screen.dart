@@ -48,8 +48,8 @@ class NotificationScreen extends StatelessWidget {
                     maxRadius: 50.0,
                     minRadius: 50.0,
                     backgroundColor: kSecondaryColor,
-                    backgroundImage: AssetImage(
-                        'assets/images/ROPR990708P48_FOTO.jpg'),
+                    backgroundImage:
+                        AssetImage('assets/images/ROPR990708P48_FOTO.jpg'),
                   ),
                   kWidthSizedBox,
                   Column(

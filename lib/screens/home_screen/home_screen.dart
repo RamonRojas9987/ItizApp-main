@@ -8,8 +8,10 @@ import 'package:itizapp/screens/login_screen/login_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:itizapp/constants.dart';
 import 'package:itizapp/screens/home_screen/widgets/student_data.dart';
+import 'package:itizapp/screens/my_profile/my_profile.dart';
 // import 'package:itizapp/screens/my_profile/my_profile.dart';
 import 'package:itizapp/screens/notification_screen/notification_screen.dart';
+import 'package:itizapp/screens/proccess_screen/proccess_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -35,20 +37,20 @@ class HomeScreen extends StatelessWidget {
                     const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        StudentName(studentName: 'Ramón'),
+                        StudentName(studentName: ''),
                         kHalfSizedBox,
                         StudentCarrer(
                             studentCarrer: 'Carrera - | Semestre : -'),
                         kHalfSizedBox,
-                        StudentYear(studentYear: '2022-2023')
+                        StudentYear(studentYear: '2023-2024')
                       ],
                     ),
                     kHalfSizedBox,
                     StudentPicture(
-                        picAddress: 'assets/images/ROPR990708P48_FOTO.jpg',
+                        picAddress: 'assets/images/3177440.png',
                         onPress: () {
                           Navigator.pushNamed(
-                              context, NotificationScreen.routeName);
+                              context, MyProfileScreen.routeName);
                         }),
                   ],
                 ),
@@ -57,15 +59,15 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     StudentDataCard(
-                        title: context.select((NotificationsBloc bloc) =>
-                            bloc.state.status.toString()),
-                        onPress: () {
-                          debugger;
-                          Navigator.pushNamed(
-                              context, NotificationScreen.routeName);
-                        }),
+                        title: 'Mensajes',
+                        // title: context.select((NotificationsBloc bloc) =>
+                        //     bloc.state.status.toString()),
+                        onPress: () {}),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, NotificationScreen.routeName);
+                      },
                       child: Container(
                         width: MediaQuery.of(context).size.width / 2.5,
                         height: MediaQuery.of(context).size.height / 9,
@@ -77,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Text(
-                              'Mensajes',
+                              'Notificaciones',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
@@ -88,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                             Theme(
                               data: ThemeData(),
-                              child: const Icon(Icons.message),
+                              child: const Icon(Icons.circle_notifications),
                             )
                           ],
                         ),
@@ -119,11 +121,17 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         HomeCard(
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.pushNamed(
+                                  context, Proccess_Screen.routeName);
+                            },
                             icon: 'assets/icons/quiz.svg',
                             title: 'Actividades'),
                         HomeCard(
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.pushNamed(
+                                  context, Proccess_Screen.routeName);
+                            },
                             icon: 'assets/icons/assignment.svg',
                             title: 'Tareas'),
                       ],
@@ -132,11 +140,17 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         HomeCard(
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.pushNamed(
+                                  context, Proccess_Screen.routeName);
+                            },
                             icon: 'assets/icons/holiday.svg',
                             title: 'Calendario'),
                         HomeCard(
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.pushNamed(
+                                  context, Proccess_Screen.routeName);
+                            },
                             icon: 'assets/icons/timetable.svg',
                             title: 'Horario'),
                       ],
@@ -145,11 +159,17 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         HomeCard(
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.pushNamed(
+                                  context, Proccess_Screen.routeName);
+                            },
                             icon: 'assets/icons/result.svg',
                             title: 'Evaluaciones'),
                         HomeCard(
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.pushNamed(
+                                  context, Proccess_Screen.routeName);
+                            },
                             icon: 'assets/icons/datesheet.svg',
                             title: 'Resultados'),
                       ],
@@ -158,11 +178,17 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         HomeCard(
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.pushNamed(
+                                  context, Proccess_Screen.routeName);
+                            },
                             icon: 'assets/icons/ask.svg',
                             title: 'Información'),
                         HomeCard(
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.pushNamed(
+                                  context, Proccess_Screen.routeName);
+                            },
                             icon: 'assets/icons/gallery.svg',
                             title: 'Galería'),
                       ],
@@ -171,11 +197,17 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         HomeCard(
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.pushNamed(
+                                  context, Proccess_Screen.routeName);
+                            },
                             icon: 'assets/icons/resume.svg',
                             title: 'Servicios\n Escolares'),
                         HomeCard(
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.pushNamed(
+                                  context, Proccess_Screen.routeName);
+                            },
                             icon: 'assets/icons/lock.svg',
                             title: 'Cambiar\n contraseña'),
                       ],
@@ -184,7 +216,10 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         HomeCard(
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.pushNamed(
+                                  context, Proccess_Screen.routeName);
+                            },
                             icon: 'assets/icons/event.svg',
                             title: 'Eventos'),
                         HomeCard(
