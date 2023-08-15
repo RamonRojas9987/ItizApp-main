@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:itizapp/screens/notification_screen/notification_screen.dart';
 
 import '../../../constants.dart';
 import '../../../presentation/blocs/notifications/notifications_bloc.dart';
@@ -100,7 +101,8 @@ class StudentDataCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.read<NotificationsBloc>().requestPermission();
+        // context.read<NotificationsBloc>().requestPermission();
+        // Navigator.pushNamed(context, NotificationScreen.routeName);
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 2.5,

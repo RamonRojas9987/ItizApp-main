@@ -121,7 +121,7 @@ class StudentDataCard extends StatelessWidget {
             ),
             Theme(
               data: ThemeData(),
-              child: const Icon(Icons.circle_notifications),
+              child: const Icon(Icons.message),
             )
           ],
         ),

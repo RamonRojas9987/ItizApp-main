@@ -48,8 +48,7 @@ class MyProfileScreen extends StatelessWidget {
                     maxRadius: 50.0,
                     minRadius: 50.0,
                     backgroundColor: kSecondaryColor,
-                    backgroundImage: AssetImage(
-                        'assets/images/ROPR990708P48_FOTO.jpg'),
+                    backgroundImage: AssetImage('assets/images/3177440.png'),
                   ),
                   kWidthSizedBox,
                   Column(
@@ -57,11 +56,11 @@ class MyProfileScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Ramón Rojas',
+                        '',
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       Text(
-                        'Carrera ISC | Semestre 11',
+                        'Carrera - | Semestre -',
                         style: Theme.of(context)
                             .textTheme
                             .titleSmall!
@@ -76,36 +75,28 @@ class MyProfileScreen extends StatelessWidget {
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ProfileDetailRow(
-                    title: 'Número de Registro', value: '2018-ASDF-2022'),
-                ProfileDetailRow(title: 'Año académico', value: '2018-2022'),
+                ProfileDetailRow(title: 'Número de Registro', value: '-'),
+                ProfileDetailRow(title: 'Año académico', value: '-'),
               ],
             ),
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ProfileDetailRow(title: 'Carrera', value: 'ISC'),
-                ProfileDetailRow(
-                    title: 'Número de control', value: '181080011'),
+                ProfileDetailRow(title: 'Carrera', value: '-'),
+                ProfileDetailRow(title: 'Número de control', value: '-'),
               ],
             ),
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ProfileDetailRow(
-                    title: 'Fecha de ingreso', value: 'ENE-JUN 2018'),
-                ProfileDetailRow(
-                    title: 'Fecha de nacimiento', value: '8 JUL 1999'),
+                ProfileDetailRow(title: 'Fecha de ingreso', value: '-'),
+                ProfileDetailRow(title: 'Fecha de nacimiento', value: '-'),
               ],
             ),
-            const ProfileDetailColumn(
-                title: 'Email', value: 'l181080011@iztapalapa.tecnm.mx'),
-            const ProfileDetailColumn(
-                title: 'Nombre Completo', value: 'José Ramón Rojas Pérez'),
-            const ProfileDetailColumn(
-                title: 'Teléfono Casa', value: '5512345678'),
-            const ProfileDetailColumn(
-                title: 'Número de teléfono', value: '5512345678')
+            const ProfileDetailColumn(title: 'Email', value: '-'),
+            const ProfileDetailColumn(title: 'Nombre Completo', value: '-'),
+            const ProfileDetailColumn(title: 'Teléfono Casa', value: '-'),
+            const ProfileDetailColumn(title: 'Número de teléfono', value: '-')
           ],
         ),
       ),
@@ -206,7 +197,7 @@ class ProfileDetailColumn extends StatelessWidget {
               )
             ],
           ),
-          Icon(Icons.lock_outline, size: 20.0)
+          const Icon(Icons.lock_outline, size: 20.0)
         ],
       ),
     );
