@@ -65,6 +65,7 @@ class HomeScreen extends StatelessWidget {
                         onPress: () {}),
                     InkWell(
                       onTap: () {
+                        context.read<NotificationsBloc>().requestPermission();
                         Navigator.pushNamed(
                             context, NotificationScreen.routeName);
                       },

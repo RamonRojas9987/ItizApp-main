@@ -100,7 +100,6 @@ class StudentDataCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.read<NotificationsBloc>().requestPermission();
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 2.5,

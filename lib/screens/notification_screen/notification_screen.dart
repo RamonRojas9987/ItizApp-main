@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:itizapp/constants.dart';
+
+import '../../presentation/blocs/notifications/notifications_bloc.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -9,22 +12,12 @@ class NotificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Perfil'),
+        title: const Text('Notificaciones'),
         actions: [
           InkWell(
             onTap: () {},
             child: Container(
               padding: const EdgeInsets.only(right: kDefaultPadding / 2),
-              child: Row(
-                children: [
-                  const Icon(Icons.report_gmailerrorred_outlined),
-                  kHalfWidthSizedBox,
-                  Text(
-                    'Reporte',
-                    style: Theme.of(context).textTheme.titleSmall,
-                  )
-                ],
-              ),
             ),
           ),
         ],
@@ -49,7 +42,7 @@ class NotificationScreen extends StatelessWidget {
                     minRadius: 50.0,
                     backgroundColor: kSecondaryColor,
                     backgroundImage:
-                        AssetImage('assets/images/ROPR990708P48_FOTO.jpg'),
+                        AssetImage('assets/images/3177440.png'),
                   ),
                   kWidthSizedBox,
                   Column(
@@ -57,11 +50,11 @@ class NotificationScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Ramón Rojas',
+                        '-',
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       Text(
-                        'Carrera ISC | Semestre 11',
+                        'Carrera - | Semestre -',
                         style: Theme.of(context)
                             .textTheme
                             .titleSmall!
@@ -73,39 +66,7 @@ class NotificationScreen extends StatelessWidget {
               ),
             ),
             sizedBox,
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ProfileDetailRow(
-                    title: 'Número de Registro', value: '2018-ASDF-2022'),
-                ProfileDetailRow(title: 'Año académico', value: '2018-2022'),
-              ],
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ProfileDetailRow(title: 'Carrera', value: 'ISC'),
-                ProfileDetailRow(
-                    title: 'Número de control', value: '181080011'),
-              ],
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ProfileDetailRow(
-                    title: 'Fecha de ingreso', value: 'ENE-JUN 2018'),
-                ProfileDetailRow(
-                    title: 'Fecha de nacimiento', value: '8 JUL 1999'),
-              ],
-            ),
-            const ProfileDetailColumn(
-                title: 'Email', value: 'l181080011@iztapalapa.tecnm.mx'),
-            const ProfileDetailColumn(
-                title: 'Nombre Completo', value: 'José Ramón Rojas Pérez'),
-            const ProfileDetailColumn(
-                title: 'Teléfono Casa', value: '5512345678'),
-            const ProfileDetailColumn(
-                title: 'Número de teléfono', value: '5512345678')
+            const Expanded(child: _HomeView()),
           ],
         ),
       ),
@@ -113,100 +74,36 @@ class NotificationScreen extends StatelessWidget {
   }
 }
 
-class ProfileDetailRow extends StatelessWidget {
-  const ProfileDetailRow({super.key, required this.title, required this.value});
-  final String title;
-  final String value;
+class _HomeView extends StatelessWidget {
+  const _HomeView();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(
-          right: kDefaultPadding / 4,
-          left: kDefaultPadding / 4,
-          top: kDefaultPadding / 2),
-      width: MediaQuery.of(context).size.width / 2,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title,
-                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        color: kTextLightColor,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15.0,
-                      )),
-              kHalfSizedBox,
-              Text(value,
-                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        color: kTextBlackColor,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15.0,
-                      )),
-              kHalfSizedBox,
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 3,
-                child: const Divider(
-                  thickness: 1.0,
-                ),
-              ),
-            ],
-          ),
-          const Icon(
-            Icons.lock_outline,
-            size: 20.0,
-          )
-        ],
-      ),
-    );
-  }
-}
 
-class ProfileDetailColumn extends StatelessWidget {
-  const ProfileDetailColumn(
-      {super.key, required this.title, required this.value});
-  final String title;
-  final String value;
+    final notifications = context.watch<NotificationsBloc>().state.notifications;
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleSmall!
-                  .copyWith(color: kTextLightColor, fontSize: 15.0),
-            ),
-            kHalfSizedBox,
-            Text(
-              value,
-              style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: kTextBlackColor,
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-            ),
-            kHalfSizedBox,
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 1.1,
-              child: const Divider(
-                thickness: 1.0,
-              ),
-            )
-          ],
-        ),
-        const Icon(Icons.lock_outline, size: 20.0)
-      ],
+    return ListView.builder(
+      itemCount: notifications.length,
+      itemBuilder: (BuildContext context, int index) {
+        final notification = notifications[index];
+        return ListTile(
+          title: Text( notification.title, style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                      fontSize: 16.0,
+                                      color: kTextBlackColor,
+                                      fontWeight: FontWeight.w800)),
+          subtitle: Text( notification.body, style: Theme.of(context)
+                            .textTheme
+                            .titleSmall!
+                            .copyWith(fontSize: 15.0,
+                            color: kContainerColor), ),
+          leading: notification.imageUrl != null 
+            ? Image.network( notification.imageUrl! )
+            : null,
+        );
+      },
     );
   }
 }

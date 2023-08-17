@@ -1,4 +1,4 @@
-package com.example.itizapp
+package com.tecnm.itizapp
 
 import io.flutter.embedding.android.FlutterActivity
 

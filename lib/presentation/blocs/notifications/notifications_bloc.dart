@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -22,6 +24,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   NotificationsBloc() : super(const NotificationsState()) {
     on<NotificationStatusChanged>(_notificationStatusChanged);
 
+    on<NotificationReceived>(_onPushMessageReceived);
 
     //Verificar estado de las notificaciones
     _initialStatusCheck();
@@ -42,6 +45,14 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     _getFCMToken();
   }
 
+    void _onPushMessageReceived(
+      NotificationReceived event, Emitter<NotificationsState> emit) {
+    emit(state.copyWith(
+      notifications: [event.pushMessage, ...state.notifications]
+    ));
+    _getFCMToken();
+  }
+
   void _initialStatusCheck() async {
     final settings = await messaging.getNotificationSettings();
     add(NotificationStatusChanged(settings.authorizationStatus));
@@ -56,9 +67,18 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
 
   void _handleRemoteMessage(RemoteMessage message) {
     if (message.notification == null) return;
+    final notification = PushMessage(
+        messageId:
+            message.messageId?.replaceAll(':', '').replaceAll('%', '') ?? '',
+        title: message.notification!.title ?? '',
+        body: message.notification!.body ?? '',
+        sentDate: message.sentTime ?? DateTime.now(),
+        data: message.data,
+        imageUrl: Platform.isAndroid
+            ? message.notification!.android?.imageUrl
+            : message.notification!.apple?.imageUrl);
 
-
-            //TODO: add de un nuevo evento
+    add(NotificationReceived(notification));
   }
 
   void _onForegroundMessage() {
