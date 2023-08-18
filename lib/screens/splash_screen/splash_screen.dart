@@ -15,36 +15,20 @@ class SplashScreen extends StatelessWidget {
     });
 
     return Scaffold(
+        backgroundColor: Colors.white,
         body: Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Column(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Tecnológico Nacional',
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: kTextWhiteColor,
-                      fontSize: 25.0,
-                      fontStyle: FontStyle.normal,
-                      letterSpacing: 2.0,
-                    ),
+              const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [],
               ),
-              Text(
-                'de México',
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: kTextWhiteColor,
-                      fontSize: 25.0,
-                      fontStyle: FontStyle.normal,
-                      letterSpacing: 2.0,
-                    ),
-              ),
+              Image.asset('assets/images/logo_isc.png',
+                  height: 300.0, width: 300.0)
             ],
           ),
-          Image.asset('assets/images/logo_itiz.png', height: 80.0, width: 80.0)
-        ],
-      ),
-    ));
+        ));
   }
 }
